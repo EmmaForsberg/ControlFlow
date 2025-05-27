@@ -1,20 +1,45 @@
-﻿namespace ControlFlow
+﻿using Abstractions;
+using System.Text.RegularExpressions;
+
+namespace ControlFlow
 {
     internal class Repeater
     {
-        /// <summary>
-        /// Uppretpa text 10 gånger
-        /// </summary>
-        public static void Repeating()
-        {
-            Console.WriteLine("Upprepa gånger 10");
-            Console.WriteLine("Ange texten du vill ska upprepas 10 gånger:");
-            var input = Console.ReadLine();
+        private readonly IUI _ui;
 
-            for (int i = 1; i <= 10; i++)
+        public Repeater(IUI ui)
+        {
+            _ui = ui;
+        }
+
+        /// <summary>
+        /// Upprepa text 10 gånger
+        /// </summary>
+        public void Repeating()
+        {
+            while (true)
             {
-                Console.Write(i + ". " + input + " ");
+                _ui.Print("Upprepa gånger 10");
+                _ui.Print("Ange texten du vill ska upprepas 10 gånger:");
+                var input = _ui.GetInput();
+
+                bool isValid = Regex.IsMatch(input, @"^[a-zA-ZåäöÅÄÖ]+$");
+                if (isValid)
+                {
+                    for (int i = 1; i <= 10; i++)
+                    {
+                        _ui.PrintSingleLine($"{i}. {input} ");
+                    }
+                    _ui.Print("\nTryck Enter för att återgå till huvudmenyn");
+                    _ui.GetInput();
+                    break;
+                }
+                else
+                {
+                    continue;
+                }
             }
+
         }
     }
 }

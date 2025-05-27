@@ -1,19 +1,30 @@
-﻿namespace ControlFlow
+﻿using Abstractions;
+
+namespace ControlFlow
 {
     internal class SentenceAnalyzer
     {
+        private readonly IUI _ui;
+
+        public SentenceAnalyzer(IUI ui)
+        {
+            _ui = ui;
+        }
+
         /// <summary>
         /// Skriver ut det tredje ordet
         /// </summary>
-        public static void PrintThirdWord()
+        public void PrintThirdWord()
         {
-            Console.WriteLine("Det tredje ordet");
-            Console.WriteLine("Ange en mening med minst tre ord.");
-            var input = Console.ReadLine();
+            _ui.Print("Det tredje ordet");
+            _ui.Print("Ange en mening med minst tre ord.");
+            var input = _ui.GetInput();
 
             var words = input.Split(' ');
 
-            Console.WriteLine(words[2]);
+
+
+            _ui.Print(words[2]);
         }
     }
 }
