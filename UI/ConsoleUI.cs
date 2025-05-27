@@ -7,15 +7,10 @@ using System.Threading.Tasks;
 
 namespace ControlFlow.UI
 {
-    /// <summary>
-    /// Klass som vet hur man skriver till konsolen
-    /// </summary>
     internal class ConsoleUI : IUI
     {
-
         /// <summary>
-        /// om console.readline inte är null används det.
-        //Annars används string.empty
+        /// Metod som garanterar att jag alltid får tillbaka en icke-null string. 
         /// </summary>
         /// <returns></returns>
         public string GetInput()
@@ -23,11 +18,19 @@ namespace ControlFlow.UI
             return Console.ReadLine() ?? string.Empty;
         }
 
+        /// <summary>
+        /// Tar en sträng och skriver ut den.
+        /// </summary>
+        /// <param name="message"></param>
         public void Print(string message)
         {
            Console.WriteLine(message);
         }
 
+        /// <summary>
+        /// Skriver ut text som ska vara på samma rad
+        /// </summary>
+        /// <param name="word"></param>
         public void PrintSingleLine(string word)
         {
             Console.Write(word);

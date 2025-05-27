@@ -7,9 +7,6 @@ using System.Threading.Tasks;
 
 namespace ControlFlow
 {
-    /// <summary>
-    /// vet NÄR något ska skrivas ut, men inte hur.
-    /// </summary>
     internal class Main
     {
         private IUI _ui;
@@ -24,13 +21,15 @@ namespace ControlFlow
             Printmenu();
         }
 
+        /// <summary>
+        /// Huvudmenyn som skriver ut val och användaren väljer vilken klass och metod man ska skickas vidare till.
+        /// </summary>
         private void Printmenu()
         {
             while (true)
             {
-
                 _ui.Print("Välkommen till huvudmenyn. \nSkriv in en siffra för att testa olika funktioner.");
-                _ui.Print("0. Exit\n1 Beräkna biljettpris \n2 Repetera ord \n3 Tredje ordet");
+                _ui.Print("0. Exit\n1. Beräkna biljettpris \n2. Repetera ord \n3. Tredje ordet");
 
                 var input = _ui.GetInput();
                 switch (input)

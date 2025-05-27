@@ -1,4 +1,5 @@
 ﻿using Abstractions;
+using System.Text.RegularExpressions;
 
 namespace ControlFlow
 {
@@ -12,19 +13,40 @@ namespace ControlFlow
         }
 
         /// <summary>
-        /// Skriver ut det tredje ordet
+        /// Man anger en mening med minst 3 ord. Regex kollar så att det är bokstäver och mellanrum.
+        /// Inuti if(isValid) delar man upp strängen och kollar så att längden är >= 3 och skriver ut det 3e ordet i meningen.
+        /// Metoden funkar också för flera mellanslag mellan orden.
+        /// Om allt ser bra ut så skickas mna till huvudmenyn, annars fortsätter loopen tills rätt input.
         /// </summary>
         public void PrintThirdWord()
         {
-            _ui.Print("Det tredje ordet");
-            _ui.Print("Ange en mening med minst tre ord.");
-            var input = _ui.GetInput();
+            while (true)
+            {
+                _ui.Print("Ange en mening med minst tre ord.");
+                var input = _ui.GetInput();
 
-            var words = input.Split(' ');
-
-
-
-            _ui.Print(words[2]);
+                bool isValid = Regex.IsMatch(input, @"^[a-zA-ZåäöÅÄÖ ]+$");
+                if (isValid)
+                {
+                    var words = input.Split(' ');
+                    if (words.Length >= 3)
+                    {
+                        _ui.Print(words[2]);
+                    }
+                    else
+                    {
+                        _ui.Print("Meningen måste vara minst tre ord.");
+                    }
+                    _ui.Print("\nTryck Enter för att återgå till huvudmenyn");
+                    _ui.GetInput();
+                    break;
+                }
+                else
+                {
+                    _ui.Print("Felaktig input. Försök igen:");
+                    continue;
+                }
+            }
         }
     }
 }

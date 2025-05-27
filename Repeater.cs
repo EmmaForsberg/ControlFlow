@@ -13,13 +13,15 @@ namespace ControlFlow
         }
 
         /// <summary>
-        /// Upprepa text 10 gånger
+        /// Metod som upprepar text 10 gånger. 
+        /// Den använder Regex för att kolla så input är text och inte siffror eller siffror tillsammans med text.
+        /// Om isValid så går den in i loopen och skriver ut texten 10 gånger, sedan skickas man tillbaka till huvudmenyn.
+        /// Vid felaktig input börjar while loopen om.
         /// </summary>
         public void Repeating()
         {
             while (true)
             {
-                _ui.Print("Upprepa gånger 10");
                 _ui.Print("Ange texten du vill ska upprepas 10 gånger:");
                 var input = _ui.GetInput();
 
@@ -36,10 +38,10 @@ namespace ControlFlow
                 }
                 else
                 {
+                    _ui.Print("Felaktig input. Försök igen:");
                     continue;
                 }
             }
-
         }
     }
 }
