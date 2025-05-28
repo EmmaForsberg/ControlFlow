@@ -25,10 +25,15 @@ namespace ControlFlow
                 _ui.Print("Ange en mening med minst tre ord.");
                 var input = _ui.GetInput();
 
+                // Regex som tar bort dubbla mellanslag
+                input = Regex.Replace(input, @"\s+", " ");
+
+                //Regex kollar så att det är bokstäver och mellanrum
                 bool isValid = Regex.IsMatch(input, @"^[a-zA-ZåäöÅÄÖ ]+$");
                 if (isValid)
                 {
                     var words = input.Split(' ');
+
                     if (words.Length >= 3)
                     {
                         _ui.Print(words[2]);

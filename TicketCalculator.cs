@@ -108,6 +108,9 @@ namespace ControlFlow
                 total += DecideAge();
             }
             _ui.Print($"\nTotalt pris för {numberOfPeople} personer: {total} kr\n");
+
+            _ui.Print("\nTryck Enter för att återgå till huvudmenyn");
+            _ui.GetInput();
         }
     }
 }
