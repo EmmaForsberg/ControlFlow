@@ -1,60 +1,54 @@
 ﻿using Abstractions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ControlFlow
+namespace ControlFlow;
+
+internal class Main
 {
-    internal class Main
+    private IUI _ui;
+
+    public Main(IUI ui)
     {
-        private IUI _ui;
+        _ui = ui;
+    }
 
-        public Main(IUI ui)
-        {
-            _ui = ui;
-        }
+    public void Run()
+    {
+        Printmenu();
+    }
 
-        public void Run()
+    /// <summary>
+    /// Huvudmenyn som skriver ut val och användaren väljer vilken klass och metod man ska skickas vidare till.
+    /// </summary>
+    private void Printmenu()
+    {
+        while (true)
         {
-            Printmenu();
-        }
+            _ui.Print("Välkommen till huvudmenyn. \nSkriv in en siffra för att testa olika funktioner.");
+            _ui.Print("0. Exit\n1. Beräkna biljettpris \n2. Repetera ord \n3. Tredje ordet");
 
-        /// <summary>
-        /// Huvudmenyn som skriver ut val och användaren väljer vilken klass och metod man ska skickas vidare till.
-        /// </summary>
-        private void Printmenu()
-        {
-            while (true)
+            var input = _ui.GetInput();
+            switch (input)
             {
-                _ui.Print("Välkommen till huvudmenyn. \nSkriv in en siffra för att testa olika funktioner.");
-                _ui.Print("0. Exit\n1. Beräkna biljettpris \n2. Repetera ord \n3. Tredje ordet");
+                case "0":
+                    Environment.Exit(0);
+                    break;
+                case "1":
+                    var ticketCalculator = new TicketCalculator(_ui);
+                    ticketCalculator.GetTicketCalculationMode();
+                    break;
+                case "2":
+                    var repeater = new Repeater(_ui);
+                    repeater.Repeating();
+                    break;
+                case "3":
+                    var sentenceAnalyzer = new SentenceAnalyzer(_ui);
+                    sentenceAnalyzer.PrintThirdWord();
+                    break;
 
-                var input = _ui.GetInput();
-                switch (input)
-                {
-                    case "0":
-                        Environment.Exit(0);
-                        break;
-                    case "1":
-                        var ticketCalculator = new TicketCalculator(_ui);
-                        ticketCalculator.GetTicketCalculationMode();
-                        break;
-                    case "2":
-                        var repeater = new Repeater(_ui);
-                        repeater.Repeating();
-                        break;
-                    case "3":
-                        var sentenceAnalyzer = new SentenceAnalyzer(_ui);
-                        sentenceAnalyzer.PrintThirdWord();
-                        break;
-
-                    default:
-                        _ui.Print("Felaktig input\n");
-                        break;
-                };
-            }; 
-        }
+                default:
+                    _ui.Print("Felaktig input\n");
+                    break;
+            };
+        }; 
     }
 }
