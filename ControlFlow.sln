@@ -5,8 +5,6 @@ VisualStudioVersion = 17.14.36121.58
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlFlow", "ControlFlow.csproj", "{5D818052-655C-4F86-9112-852120AC67BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abstractions", "..\Abstractions\Abstractions.csproj", "{C1991E22-C059-4DCA-BE57-D1F88BD14C8F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{5D818052-655C-4F86-9112-852120AC67BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D818052-655C-4F86-9112-852120AC67BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D818052-655C-4F86-9112-852120AC67BE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C1991E22-C059-4DCA-BE57-D1F88BD14C8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C1991E22-C059-4DCA-BE57-D1F88BD14C8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C1991E22-C059-4DCA-BE57-D1F88BD14C8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C1991E22-C059-4DCA-BE57-D1F88BD14C8F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
